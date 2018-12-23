@@ -1,106 +1,81 @@
 //Define variables for Wins, Losses, Guesses & Your Guesses so Far
-//Increase by 1 if user wins
-var Wins = 0;
-//Increse by 1 if user loses
+//Increase score by 1 if user wins
+var wins = 0;
+//Increse score by 1 if user losses
 var losses = 0;
-//User has 10 opportunities to guess the letter correctly
-var guessesLeft = 11;
-//We want to create an empty array to be able to push the letters (failed attempts) & display the list of letters on the screen for our user to see 
+//User has 5 opportunities to guess the letter correctly
+var guessesLeft = 5;
+//We want to create an empty array to be able to push the letters (failed attempts) & display the list of letters pressed visible to the user
 var guessedLetters = [];
+//Declare a variable in the outer scope to be assigned later inside my function
+var userLetter;
 
-
-///First, computer selects a random letter and prints it in the console. We can start by saving an empty array in the attempts variable.
-    //Later, we can push the attempted letters to the empty array so the user does not lose twice if she/he press the same letter *********
-// var attempts = [];
-
-
-//First, the computer selects a random letter and prints it in the console
-//How will the computer select a random letter?????????????????
-    //Math.random() returns a random number between 0 & 1
-    //Math.random() + Math.floor() * # return random integers (so how can I return a random letter??????)
-                                    //I do not know? ....research......*********go to office hours
-    //We can start by create an array of random letters from which the computer can choose from...
+//I can start by creating an array of random letters from which the computer can choose from:
 var misteryLetters = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
-
-//Then, we have to make the computer choose a random letter from our 'misteryLetters' array
+//Then, the computer must choose a random letter from our "misteryLetters" array
 var myRandomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.length)];
 
-//Now, the computer must recognize the action of our user pressing a key. Use onkeyup! See previous class activities.
-//When the user releases a key on the keyboard, the letter must be printed on the screen in front of 'Your Guesses so Far:'
+
+//When the user releases a key on the keyboard:
 document.onkeyup = function(event) {
-    console.log("computer guess " + myRandomLetter);   
+    //Print 'myRandomLetter' in the console to check my progress & ensure my code is working so far
+    console.log("COMPUTER GUESSED: " + myRandomLetter) 
+    //Convert user's entry to lowercase
+    userLetter = event.key.toLowerCase();
+    //Print 'userLetter' in the console
+    console.log("You guessed: " +userLetter)
 
-    //Converts user's guessed letter to lowercase, and saves it to the variable 'attempts'..changed variable to guessedLetters
-    guessedLetters = event.key.toLowerCase();
-    if(guessedLetters === myRandomLetter) {
-        //Congratulate the user to encourage her/him to keep playing!
-        alert("Congratulations!!!");
-        //Increase wins by 1
-        wins++; 
-        wins.textContent = wins; //did not work
-        // document.getElementById(wins.value).innerHTML = "wins";  (console says 'can't set innerHTML property????????????????)😭
-        // wins.textContent = event.key; ***worked at some point, but it printed the letter 😱
+    //If user guesses correctly:
+    if(userLetter === myRandomLetter) {
+        //increment wins
+        wins++;
+        //reset array 
+        guessedLetters = [];
+        //reset number of guesses left
+        guessesLeft = 5;
+        //Congratulate the user to keep her/him engaged in the game
+        alert("You're a Supernova Star!🤩")
+        //computer must select a different letter
+        myRandomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.length)];
+    } 
 
-
-        //I need the wins to increase by 1 and display them on the screen
-        //tried document.write but it overwrites everything so not the best option here
-        // wins.textContent += attempts + ''; maybe??? did not work
-
-        //if guessed incorrectly, display the incorrect letter in front of Your Guesses so Far
-        } else {
-            if(guessedLetters !== myRandomLetter);
-                console.log("you guessed " + guessedLetters);
-                // document.getElementById("keepTrack").innerHTML = guessedLetters;
-                //here I want to print the guessed letters in front of your guesses so far
-                //increments losses
-                losses++;
-                //decrements guessesLeft
-                guessesLeft--;
-                // Guesses Left must be reset to 11 (10 chances)
-
-
-                //display the letter the user pressed in front of guessed letters
-                //a for loop could help
-               
-            }
-
-
-
-        }
-       
-
+    //If userLetter is not equals to myRandomLetter, push userLetter inside the empty array
+    else if(userLetter !== myRandomLetter) {
+            guessedLetters.push(userLetter);
+            //decrease number of guesses left by 1
+            guessesLeft--;
+    }
     
-        
-       
-        
-        
-        
-        //Keep track of the score 
-
-        //document.getElementById("Wins").innerHTML = function(event); ====DO NOT USE THIS ONE
-        //USE targetDiv.textContent = “text”;
+    //If guessesLeft = to zero:
+    if(guessesLeft === 0) {
+        //increment losses by 1
+        losses++;
+        //reset array
+        guessedLetters = [];
+        //reset guessesLeft
+        guessesLeft = 5;
+        //alert user game is over
+        alert("GAME OVER");
+        //computer must select a new letter
+        myRandomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.length)];
+    }
     
+    //Reach to DOM & update HTML tags by grabbing the element tag id's
+    document.getElementById("wins").innerHTML = wins;
+    document.getElementById("losses").innerHTML = losses;
+    document.getElementById("remaining").innerHTML = guessesLeft;
+    document.getElementById("keepTrack").innerHTML = guessedLetters;
+}
 
-    // Function that updates the score
-    //I believe I need to grab a reference to <strong id...>
-    // var guessedL = document.getElementById("wins"); ----failed attempt..delete before submitting
-    //I need to keep working on this, but I will back to my previous function
-
-
-
-
-        // var wins = getElementById("wins"); just keep in mind. Might be useful later on
-
-
-        ////////////////WANTS///////////////////////////
-        //this is just an idea up in the air for  now: I want to display the possible options on the screen, make them 3-D, and position them like if they were in a bridge about to fall.
-        //Then, each time the user clicks on the incorrect letter, I want to create a dramatic effec!!!!!
-        //I want the letter to fall from the bridge and break at the bottom of the screen. I want the debris to stay visible at the bottom of the page. 
-        //I want to keep the user engaged and make her/him play again 
+//Reset button refreshes the page, but user must have the option to 'cancel' & keep playing
+function clearScores(){
+    var clear = confirm("Are you sure you want to set your scores back to zero?");
+    if(clear) {
+        window.location.reload(true);
+    }
+    else {
+        alert("Let's keep playing!");
+    }
     
-
-
-///test 
-// function newFunction() {
-//     document.getElementById("wins").innerHTML = function () { };
+}
         

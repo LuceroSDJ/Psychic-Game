@@ -1,0 +1,71 @@
+body {
+    text-align: center;
+    font-family: 'Gloria Hallelujah', cursive;
+    background-image: url(../images/magic.jpg);
+    background-repeat: repeat-x;
+}
+
+h1, p {
+    color: #9dfdef;
+    text-shadow: 2px 2px gray;
+    line-height: 2;
+}
+
+.WINS {
+    color: #44b2cf;      
+}
+.LOSSES {
+    color: #f8a7ee; 
+}
+.GUESSES {
+    color: #00767f;
+
+}
+.LIST {
+    color: #a40063;   
+}
+
+h1 {
+    font-size: 45px;
+}
+
+p {
+    font-size: 30px;
+}
+
+#keepTrack {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    color: #00767f;
+}
+
+button {
+    color: #7b7486;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 22px;
+    border-radius: 15px;
+    background-image: url(../images/magic8.gif);
+}
+button:hover {
+    font-size: 50px;
+    background-image: url(../images/magic3.gif);
+}
+
+/** tablet screen size **/
+@media screen and (max-width: 768px) {
+body {
+    width: auto;
+    height: auto;
+}}
+/** phone in landscape screen size **/
+@media screen and (max-width: 640px) {
+body {
+    width: auto;
+    height: auto;
+}}
+/** tablet screen size **/
+@media screen and (max-width: 980px) {
+body {
+    width: auto;
+    height: auto;
+}}
+

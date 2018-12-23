@@ -6,11 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Psychic-Game!</title>
 
+    <!-- Link to reset css file -->
+    <link rel="stylesheet" text="text/css" href="assets/css/reset.css">
     <!-- link to css file -->
-    <link rel="stylesheets" text="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" text="text/css" href="assets/css/style.css">
+    <!-- Google Fonts link-->
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Kaushan+Script|ZCOOL+KuaiLe" rel="stylesheet">
 
     <!-- link html file to external JavaScript file -->
     <script type="text/javascript" src="assets/javascript/game.js"></script>
+    
 
 
 </head>
@@ -19,16 +24,17 @@
 <h1>Guess what letter I am thinking of?</h1>
 <!-- if time permits, I will try to figure out how to make the user use the input box instead of just randomly clicking anywhere on the screen -->
 <!-- <p>Ready! Set! Guess!: <input type="text" id="userLetter"> -->
-    <ul>
-        <li>Wins: <strong id="wins"></strong></li>
-        <li>Losses: <strong id="losses"></strong></li>
-        <li>Guesses left: <strong  id="Ramaining"></strong></li>
-        <li>Your Guesses so Far: <strong  id="keepTrack"></strong> </li>
-    </ul>
+    
+<p class="WINS">Wins: <strong id="wins">0</strong></p>
+<p class="LOSSES">Losses: <strong id="losses">0</strong></p>
+<p class="GUESSES">Guesses left: <strong  id="remaining">5</strong></p>
+<p class="LIST">Your Guesses so Far: <strong  id="keepTrack"></strong></p>
+<button type="submit"  onClick="clearScores()">CLEAR SCORES</button>
 
-    <!-- Without refreshing the page, increase the 'Wins' counter and restart the game when the user wins -->
 
-    <!-- Again, without refreshing the page, increase the 'Losses' counter and restart the game when the user loses -->
+<!-- Without refreshing the page, increase the 'wins' counter and restart the game when the user wins -->
+
+<!-- Again, without refreshing the page, increase the 'Losses' counter and restart the game when the user loses -->
 
     
 </body>
