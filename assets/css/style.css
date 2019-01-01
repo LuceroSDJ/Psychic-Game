@@ -1,8 +1,11 @@
-body {
+body, html {
     text-align: center;
     font-family: 'Gloria Hallelujah', cursive;
     background-image: url(../images/magic.jpg);
-    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-position:center;
+    height: 100%;   
 }
 
 h1, p {
@@ -14,13 +17,15 @@ h1, p {
 .WINS {
     color: #44b2cf;      
 }
+
 .LOSSES {
     color: #f8a7ee; 
 }
+
 .GUESSES {
     color: #00767f;
-
 }
+
 .LIST {
     color: #a40063;   
 }
@@ -45,6 +50,7 @@ button {
     border-radius: 15px;
     background-image: url(../images/magic8.gif);
 }
+
 button:hover {
     font-size: 50px;
     background-image: url(../images/magic3.gif);
@@ -52,20 +58,31 @@ button:hover {
 
 /** tablet screen size **/
 @media screen and (max-width: 768px) {
-body {
-    width: auto;
-    height: auto;
-}}
+    body, html {    
+        background-size: 100% 100%;
+        background-repeat:no-repeat;
+        background-position:center;
+        height: 100%;
+}
+}
+    
 /** phone in landscape screen size **/
 @media screen and (max-width: 640px) {
-body {
-    width: auto;
-    height: auto;
-}}
+body, html {   
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-position:center;
+    height: 100%;
+} 
+}
+    
 /** tablet screen size **/
 @media screen and (max-width: 980px) {
-body {
-    width: auto;
-    height: auto;
-}}
+body, html {   
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-position:center;
+    height: 100%;
+}     
+}
 
