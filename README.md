@@ -9,15 +9,15 @@ This app runs in the browser, and features dynamically updated HTML and CSS powe
 * CSS
 * JavaScript  
 
-### I will think of a letter. Then, you must guess the letter I am thinking of! How exciting!
+## FUNCTIONALITY
+This program randomly picks a letter from an existing array, and then the user has to guess which letter the app chose.
 
-### Please follow the instructions and conditions:
-* Press the key you think is in my mind right now.
-* If you guess correctly, you win a point and we can keep playing! I will think of a different letter.
-* If you guess incorrectly, you get a losing point.
-* Keep in mind you have 10 chances to guess the letter correctly.
-* If you fail to guess the letter I am thinking of, do not worry! I will think of a different letter and we can play again!
-* To help you, I will keep track of the letter you guess incorrectly.
+![game](https://user-images.githubusercontent.com/44692872/59547852-10284e80-8f0b-11e9-96b7-f2784381be92.png)
+
+* ```Wins:``` reflects the number of times the user has guessed the letter correctly.
+* `Losses:` reflects the number of times the user failed to guess the letter correctly after exhausting all guesses.
+* `Guesses Left:` the user has 5 opportunities to guess the letter correctly. When the user guesses incorrectly, the number of `guesses left` decrease by one.
+* `You Clicked so Far:` reflects the letters the user has guessed incorrectly.
 
 ### Good luck!
 
