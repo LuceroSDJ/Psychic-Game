@@ -11,19 +11,23 @@ var guessedLetters = [];
 var userLetter;
 
 //I can start by creating an array of random letters from which the computer can choose from:
-var misteryLetters = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
+var misteryLetters = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 //Then, the computer must choose a random letter from our "misteryLetters" array
 var myRandomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.length)];
 
-
-//When the user releases a key on the keyboard:
+// "The keyup event fires when the user releases a key that was previously pressed"
+// syntax:  target.onkeyup = functionRef;
+//"The function receives a KeyboardEvent object as its sole argument"
 document.onkeyup = function(event) {
     //Print 'myRandomLetter' in the console to check my progress & ensure my code is working so far
     console.log("COMPUTER GUESSED: " + myRandomLetter) 
-    //Convert user's entry to lowercase
-    userLetter = event.key.toLowerCase();
+
+    //Then, grab the value of the key pressed by the user & convert to upper case to match our misteryLetter
+    //KeyboardEvent.key "Returns a DOMString representing the key value of the key represented by the event." 
+    //https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
+    userLetter = event.key.toUpperCase();
     //Print 'userLetter' in the console
-    console.log("You guessed: " +userLetter)
+    console.log("You guessed: " + userLetter)
 
     //If user guesses correctly:
     if(userLetter === myRandomLetter) {
@@ -46,7 +50,7 @@ document.onkeyup = function(event) {
             guessesLeft--;
     }
     
-    //If guessesLeft = to zero:
+    //If guessesLeft === to zero:
     if(guessesLeft === 0) {
         //increment losses by 1
         losses++;
@@ -69,8 +73,8 @@ document.onkeyup = function(event) {
 
 //Reset button refreshes the page, but user must have the option to 'cancel' & keep playing
 function clearScores(){
-    var clear = confirm("Are you sure you want to set your scores back to zero?");
-    if(clear) {
+    confirm("Are you sure you want to set your scores back to zero?");
+    if(true) {
         window.location.reload(true);
     }
     else {
