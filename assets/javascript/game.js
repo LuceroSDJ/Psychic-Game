@@ -12,15 +12,29 @@ var userLetter;
 
 //I can start by creating an array of random letters from which the computer can choose from:
 var misteryLetters = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-//Then, the computer must choose a random letter from our "misteryLetters" array
-var myRandomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.length)];
+//initialize a variable to later assign a random letter
+var randomLetter = null;
+
+// Generate a function to generate a new random letter
+var generateNewRandom = function() {
+    //here we generate a random letter from our misteryLetters array & store it in randomLetter variable initialized globally
+    randomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.length)];
+}
+//call function to generate random letter on page load
+generateNewRandom();
+
+// generate a function to reset our guessesLeft & guessedLetters array
+var reset = function () {
+    guessesLeft = 5;
+    guessedLetters = [];
+}
 
 // "The keyup event fires when the user releases a key that was previously pressed"
 // syntax:  target.onkeyup = functionRef;
 //"The function receives a KeyboardEvent object as its sole argument"
 document.onkeyup = function(event) {
     //Print 'myRandomLetter' in the console to check my progress & ensure my code is working so far
-    console.log("COMPUTER GUESSED: " + myRandomLetter); 
+    console.log("RANDOM LETTER: " + randomLetter); 
 
     //Then, grab the value of the key pressed by the user & convert to upper case to match our misteryLetter
     //KeyboardEvent.key "Returns a DOMString representing the key value of the key represented by the event." 
@@ -30,21 +44,19 @@ document.onkeyup = function(event) {
     console.log("You guessed: " + userLetter);
 
     //If user guesses correctly:
-    if(userLetter === myRandomLetter) {
+    if(userLetter === randomLetter) {
         //increment wins
         wins++;
-        //reset array 
-        guessedLetters = [];
-        //reset number of guesses left
-        guessesLeft = 5;
+        //reset guessesLeft & empty guessedLetters array 
+        reset();
         //Congratulate the user to keep her/him engaged in the game
         alert("You're a Supernova Star!🤩")
-        //computer must select a different letter
-        myRandomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.length)];
+        //call function to generate a new random letter from our array
+        generateNewRandom();
     } 
 
     //If userLetter is not equals to myRandomLetter, push userLetter inside the empty array
-    else if(userLetter !== myRandomLetter) {
+    else if(userLetter !== randomLetter) {
             guessedLetters.push(userLetter);
             //decrease number of guesses left by 1
             guessesLeft--;
@@ -54,21 +66,20 @@ document.onkeyup = function(event) {
     if(guessesLeft === 0) {
         //increment losses by 1
         losses++;
-        //reset array
-        guessedLetters = [];
-        //reset guessesLeft
-        guessesLeft = 5;
+        //reset guessesLeft & empty guessedLetters array 
+        reset();
         //alert user game is over
         alert("GAME OVER");
-        //computer must select a new letter
-        myRandomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.length)];
+         //call function to generate a new random letter from our array
+         generateNewRandom();
     }
     
     //Reach to DOM & update HTML tags by grabbing the element tag id's
     document.getElementById("wins").innerHTML = wins;
     document.getElementById("losses").innerHTML = losses;
     document.getElementById("remaining").innerHTML = guessesLeft;
-    document.getElementById("keepTrack").innerHTML = guessedLetters;
+    document.getElementById("keepTrack").innerHTML = guessedLetters.join(", ");
+    ;
 }
 
 //Reset button refreshes the page, but user must have the option to 'cancel' & keep playing
