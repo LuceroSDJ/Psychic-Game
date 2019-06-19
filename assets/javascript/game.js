@@ -20,14 +20,14 @@ var myRandomLetter = misteryLetters[Math.floor(Math.random() * misteryLetters.le
 //"The function receives a KeyboardEvent object as its sole argument"
 document.onkeyup = function(event) {
     //Print 'myRandomLetter' in the console to check my progress & ensure my code is working so far
-    console.log("COMPUTER GUESSED: " + myRandomLetter) 
+    console.log("COMPUTER GUESSED: " + myRandomLetter); 
 
     //Then, grab the value of the key pressed by the user & convert to upper case to match our misteryLetter
     //KeyboardEvent.key "Returns a DOMString representing the key value of the key represented by the event." 
     //https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
     userLetter = event.key.toUpperCase();
     //Print 'userLetter' in the console
-    console.log("You guessed: " + userLetter)
+    console.log("You guessed: " + userLetter);
 
     //If user guesses correctly:
     if(userLetter === myRandomLetter) {
@@ -73,13 +73,12 @@ document.onkeyup = function(event) {
 
 //Reset button refreshes the page, but user must have the option to 'cancel' & keep playing
 function clearScores(){
-    confirm("Are you sure you want to set your scores back to zero?");
-    if(true) {
+    var clear = confirm("Are you sure you want to set your scores back to zero?");
+    if(clear) {
         window.location.reload(true);
     }
     else {
         alert("Let's keep playing!");
-    }
-    
+    } 
 }
         
