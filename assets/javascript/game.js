@@ -43,6 +43,17 @@ document.onkeyup = function(event) {
     //Print 'userLetter' in the console
     console.log("You guessed: " + userLetter);
 
+    // =============   TEST CODE =====================
+    //I want to create a for loop to check if a key has already been incorrectly guessed
+    //clicking on the same letter twice should not affect the number of guesses left & should not be pushed to guessedLetters array
+    for(var i = 0; i < guessedLetters.length; i++) {
+        if(guessedLetters[i] === userLetter) {
+            return alert("letter \"" + guessedLetters[i] + "\" has already been guessed incorrectly. \n Choose a different letter!");
+        }
+    }
+
+    console.log("incorrect guesses: " + guessedLetters);
+    
     //If user guesses correctly:
     if(userLetter === randomLetter) {
         //increment wins
@@ -73,6 +84,8 @@ document.onkeyup = function(event) {
          //call function to generate a new random letter from our array
          generateNewRandom();
     }
+
+
     
     //Reach to DOM & update HTML tags by grabbing the element tag id's
     document.getElementById("wins").innerHTML = wins;
