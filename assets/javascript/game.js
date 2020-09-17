@@ -27,6 +27,8 @@ generateNewRandom();
 var reset = function () {
     guessesLeft = 5;
     guessedLetters = [];
+    //document.getElementById("remaining").innerHTML = guessesLeft;  //test
+    setTimeout(function () { document.getElementById("remaining").innerHTML = guessesLeft; alert("GAME OVER") }, 100);
 }
 
 // "The keyup event fires when the user releases a key that was previously pressed"
@@ -35,10 +37,11 @@ var reset = function () {
 document.onkeyup = function(event) {
     //Print 'myRandomLetter' in the console to check my progress & ensure my code is working so far
     console.log("RANDOM LETTER: " + randomLetter); 
+    //KeyboardEvent.key "Returns a DOMString representing the key value of the key represented by the event." 
+    console.log(event);
+    //https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
 
     //Then, grab the value of the key pressed by the user & convert to upper case to match our misteryLetter
-    //KeyboardEvent.key "Returns a DOMString representing the key value of the key represented by the event." 
-    //https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
     userLetter = event.key.toUpperCase();
     //Print 'userLetter' in the console
     console.log("You guessed: " + userLetter);
@@ -66,39 +69,41 @@ document.onkeyup = function(event) {
         generateNewRandom();
     } 
 
-    //If userLetter is not equals to myRandomLetter, push userLetter inside the empty array
+    //If userLetter is not equals to myRandomLetter, push userLetter inside the empty array "guessedLetters"
     else if(userLetter !== randomLetter) {
-            guessedLetters.push(userLetter);
-            //decrease number of guesses left by 1
-            guessesLeft--;
+        guessedLetters.push(userLetter);
+        //decrease number of guesses left by 1
+        guessesLeft--;
+        document.getElementById("remaining").innerHTML = guessesLeft;
     }
     
     //If guessesLeft === to zero:
     if(guessesLeft === 0) {
         //increment losses by 1
-        losses++;
+        document.getElementById("remaining").innerHTML = guessesLeft;
         //reset guessesLeft & empty guessedLetters array 
-        reset();
+        reset(); 
+        //document.getElementById("remaining").innerHTML = guessesLeft;
+        
         //alert user game is over
-        alert("GAME OVER");
-         //call function to generate a new random letter from our array
-         generateNewRandom();
+        //setTimeout(function(){reset(); }, 1000);  //TEST
+        //alert("GAME OVER");
+        losses++;
+        //call function to generate a new random letter from our array
+        generateNewRandom();
     }
 
-
-    
     //Reach to DOM & update HTML tags by grabbing the element tag id's
     document.getElementById("wins").innerHTML = wins;
     document.getElementById("losses").innerHTML = losses;
-    document.getElementById("remaining").innerHTML = guessesLeft;
+    //document.getElementById("remaining").innerHTML = guessesLeft;
     document.getElementById("keepTrack").innerHTML = guessedLetters.join(", ");
-    ;
 }
 
 //Reset button refreshes the page, but user must have the option to 'cancel' & keep playing
 function clearScores(){
     var clear = confirm("Are you sure you want to set your scores back to zero?");
-    if(clear) {
+    if(clear) { 
         window.location.reload(true);
     }
     else {
