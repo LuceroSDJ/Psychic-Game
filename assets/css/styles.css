@@ -1,0 +1,20 @@
+body {
+    display: grid;
+    grid-template-columns: auto 30%;
+    grid-template-rows: 15% 85%;
+    grid-template-areas: "header header"
+                        "main aside";                     
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+    text-align: center;
+}
+
+aside {
+    grid-area: aside;
+}

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,25 +11,48 @@
     <!-- Link to reset css file -->
     <link rel="stylesheet" text="text/css" href="assets/css/reset.css">
     <!-- link to css file -->
-    <link rel="stylesheet" text="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" text="text/css" href="assets/css/styles.css">
     <!-- Google Fonts link-->
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Kaushan+Script|ZCOOL+KuaiLe" rel="stylesheet">
 
     <!-- link html file to external JavaScript file -->
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <script defer type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 <body>
 
-<h1>Guess what letter I am thinking of?</h1>
+<header>
+    <nav>
+        <p>Guess the Mistery Letter</p>
+        <button id="erase">CLEAR SCORES</button>
+    </nav>
+</header>
 
-<p class="WINS">Wins: <strong id="wins">0</strong></p>
+<main>
+    <h1>Guess the Mistery Letter</h1>
+    <img src="assets/images/magic3.gif">
+    <p class="GUESSES">Guesses left: <strong  id="remaining">5</strong></p>
+    <p class="LIST">Incorrect guesses: <strong  id="keepTrack"></strong></p>
+</main>
+
+<aside>
+    <p class="WINS">Wins: <strong id="wins">0</strong></p>
+    <p class="LOSSES">Losses: <strong id="losses">0</strong></p>
+</aside>
+
+
+
+
+<!-- <h1>Guess what letter I am thinking of?</h1> -->
+
+<!-- <p class="WINS">Wins: <strong id="wins">0</strong></p>
 <p class="LOSSES">Losses: <strong id="losses">0</strong></p>
 <p class="GUESSES">Guesses left: <strong  id="remaining">5</strong></p>
 <p class="LIST">Incorrect guesses: <strong  id="keepTrack"></strong></p>
-<button type="submit"  onClick="clearScores()">CLEAR SCORES</button>
+<button id="erase">CLEAR SCORES</button> -->
 
 <!-- Without refreshing the page, increase the 'wins' counter and restart the game when the user wins -->
-<!-- Again, without refreshing the page, increase the 'Losses' counter and restart the game when the user loses -->
-   
+<!-- Again, without refreshing the page, increase the 'Losses' counter and restart the game when the user loses --> 
+
+
 </body>
 </html>
