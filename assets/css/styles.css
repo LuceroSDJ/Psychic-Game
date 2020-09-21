@@ -1,20 +1,46 @@
 body {
     display: grid;
     grid-template-columns: auto 30%;
-    grid-template-rows: 15% 85%;
+    grid-template-rows: 15% auto;
     grid-template-areas: "header header"
-                        "main aside";                     
+                        "main aside";    
+    background-color: orchid;                 
 }
 
 header {
     grid-area: header;
+    background-color: darkslategray;
 }
 
 main {
     grid-area: main;
     text-align: center;
+    background-color: powderblue;
 }
 
 aside {
     grid-area: aside;
+    background-color: cadetblue;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+#answer {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    text-align: center;
+    font-size: 100px;
+    color: white;
+
+}
+
+img {
+    height: 200px;
+
 }

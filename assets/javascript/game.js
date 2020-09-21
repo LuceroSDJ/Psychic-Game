@@ -27,8 +27,15 @@ generateNewRandom();
 var reset = function () {
     guessesLeft = 5;
     guessedLetters = [];
+    
     //document.getElementById("remaining").innerHTML = guessesLeft;  //test
-    setTimeout(function () { document.getElementById("remaining").innerHTML = guessesLeft; document.getElementById("keepTrack").innerHTML = guessedLetters.join(", "); alert("GAME OVER") }, 100);
+    setTimeout(function () {
+        document.getElementById("answer").style.visibility = "hidden";
+        document.getElementById("remaining").innerHTML = guessesLeft;
+        document.getElementById("keepTrack").innerHTML = guessedLetters.join(", ");
+        alert("Guess the new random letter!");
+        document.getElementById("image").src = "assets/images/questionmark4.png"
+    }, 100);
 }
 
 
@@ -43,7 +50,6 @@ clear.addEventListener("click", function () {
         alert("Let's keep playing!");
     }
 });
-
 
 
 // "The keyup event fires when the user releases a key that was previously pressed"
@@ -72,14 +78,21 @@ document.onkeyup = function (event) {
 
     console.log("incorrect guesses: " + guessedLetters);
 
+
     //If user guesses correctly:
     if (userLetter === randomLetter) {
         //increment wins
         wins++;
+
+        // Grab reference to image tag
+        document.getElementById("answer").innerText = event.key.toUpperCase(); 
+        document.getElementById("answer").style.visibility = "visible";
+        document.getElementById("image").src = "assets/images/test7.txt";
+            
         //reset guessesLeft & empty guessedLetters array 
         reset();
         //Congratulate the user to keep her/him engaged in the game
-        alert("You're a Supernova Star!🤩")
+        //alert("You're a Supernova Star!🤩")
         //call function to generate a new random letter from our array
         generateNewRandom();
     }
