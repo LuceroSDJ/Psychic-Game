@@ -1,7 +1,7 @@
 body {
     display: grid;
     grid-template-columns: auto 30%;
-    grid-template-rows: 20% auto 20%; 
+    grid-template-rows: 15% auto 15%; 
     grid-template-areas: "header header"
                         "section aside"
                         "footer footer";
@@ -14,7 +14,16 @@ html {
 
 header {
     grid-area: header;
-    background-color: darkslategray;
+    background-color: rgb(35, 97, 116);  
+}
+
+h1 {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 50px;
+    text-align: center;  /*centers text horizontally */
+    /* align-items: center;
+    justify-content: center; */
+    margin-top: 30px;
 }
 
 section {
@@ -22,18 +31,34 @@ section {
     text-align: center;
     background-color: powderblue;
     height: 100%;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 30px;
 }
 
 aside {
     grid-area: aside;
     background-color: cadetblue;
     height: 100%;
+    
+}
+
+aside p, button {
+    margin-top: 25%;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 30px;
+    text-align: center;
+    
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;  /* centers button horizontally within the div */
 }
 
 footer {
-    background-color: purple;
-    /* overflow: auto; */
-    /* margin-bottom: 0px; */
+    grid-area: footer;
+    background-color: rgb(35, 97, 116);
+    width: 100%;
 }
 
 .container {
@@ -43,14 +68,12 @@ footer {
 
 #answer {
     position: absolute;
+    font-size: 150px;
+    color: white;
     top: 30%;
     bottom: 70%;
     left: 50%;
     right: 50%;
-    text-align: center;
-    font-size: 150px;
-    color: white;
-
 }
 
 img {
